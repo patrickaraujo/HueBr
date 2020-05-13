@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>feed</title>
+        <link rel="stylesheet" type="text/css" href="style3.css" />
+    </head>
+    <body>
+        <container>
+            <header>
+               <figure><img alt="logo" src="img/logo.png"/></figure>
+			   <a href="alterarDados.php">Configurações</a>
+			   <a href="my.php">Meu Feed</a>
+			   <a href="sair.php">Sair</a>
+                <?php
+				session_start();
+				$id = $_SESSION['id'];
+				
+				if(empty($id)){
+					header("Location: index.php");
+				}
+				
+                    include "conexao.php"; //incluindo o banco
+
+                    $sql = "SELECT * FROM cadastro WHERE id='$id'";
+                    $resultado = mysqli_query($conexao, $sql);
+                    $vdu = mysqli_fetch_array($resultado);	
+                ?>
+
+                <img src="<?php echo "user/".$vdu['usuario']."/imgperfil/".$vdu['imagens']?>" id="perfil" alt="profilePic" class="profilePic"/>
+				<a href='profilePIC.php?id=$id'><img src='img/up.jpeg' alt='delete post' width='15' height='15' class='fRight'/></a>
+                <p><?php echo $vdu['nome'];?><p>
+                <p><?php echo $vdu['usuario'];?><p>
+                
+            </header>
+                <section id="main">
+                    <article id="status"><!---POSTAGEM-->
+                        <form method="post" enctype="multipart/form-data" action="validaPost.php">
+                            <textarea name="post" cols ="50" placeholder="Como está sua zoeira?" rows="4"></textarea>
+                            <input name ="id" type="hidden" value="<?php echo $vdu['id'] ?>"/>
+                            <input name ="pg" type="hidden" value="2"/>
+                            <legend>Foto da Hu3ragem </legend>
+                            <input type="hidden" name="MAX_FILE_SIZE" value="16777216">
+                            <input type="file" name="arquivo"/>
+                            <input type="submit" value="ENVIAR" name="send"/>
+                        </form>
+                    </article>
+                    <?php
+						//$sql2 = "SELECT * FROM post WHERE id_usuario = '$c_id_usuario' ORDER BY id DESC";
+						$sql2 = "SELECT * FROM post ORDER BY id DESC";
+						$result = mysqli_query($conexao,$sql2);
+                            if($result){
+							while($registro2 = mysqli_fetch_array($result)){
+								$post = $registro2['legenda'];
+								$id_post = $registro2['id'];
+								$var = $registro2['rand'];
+								$img_post = $registro2['imagem'];
+								$data_post = $registro2['data'];
+								$idUSER = $registro2['id_usuario'];
+								$sql3 = "SELECT usuario FROM cadastro WHERE id='$idUSER'";
+								$resultado3 = mysqli_query($conexao, $sql3);
+								$vdu3 = mysqli_fetch_array($resultado3);	
+								$user = $vdu3['usuario'];
+                                    
+                                    echo "Usuário: $user";
+                                    echo "Post: $post";
+                                    echo $data_post;
+                                    //echo '<form action="post.php"><input type="submit" value="Excluir" name="delete"/></form>';
+								if(strcmp($id, $idUSER)==0){
+									echo "<a href='post.php?id=$id_post'><img src='img/del.png' alt='delete post' class='fRight'/></a>";
+									echo "<a href='upgrade.php?id=$id_post'><img src='img/up.jpeg' alt='delete post' width='15' height='15' class='fRight'/></a>";
+								}
+								if(!empty($img_post)){
+									$imgPost = "<img src='user/$user/posts/$var/$img_post' alt='profilePic' class='profilePic'/>";
+									echo $imgPost;
+								}
+							}
+						}
+                        
+                     
+
+                    //3. Fechar conexão
+                    mysqli_close($conexao);
+
+                    ?> 
+                </section>
+        </container>
+    </body>
+</html>

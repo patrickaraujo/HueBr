@@ -1,0 +1,124 @@
+/*
+    @import url(http://fonts.googleapis.com/css?family=Press+Start+2P);
+*/
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+    
+body{
+    font-family: Arial;
+    color: #fff;
+    margin: 0 auto;
+    background: linear-gradient(to right, #151515, #0b3850, #151515);
+    /*font-family: 'Press Start 2P', cursive;*/
+    font-family: 'Dosis', sans-serif;
+}
+
+main{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+figure img{
+    width: 150px;
+    float: left;
+    position: fixed;
+}
+	
+nav ul{
+    text-align: center;
+}
+
+header{
+	height: 10%;
+	background-color: rgba(39, 39, 39, 1);
+	border-bottom: solid 1px #fff;
+	text-align: center;
+    padding-left: 0;
+    padding-right: 100%;
+    position: fixed;
+    top: 0;
+	margin-bottom: 0px;
+}
+
+
+.esconder{
+    margin: 0px; 
+    padding: 0px; 
+    border: 0px
+    visibility: hidden;
+    display: none;
+}
+
+/*
+div form{
+    color: #fff;
+    font-weight: 900;
+    margin-right: 200px;
+    padding-top: 20px;
+    text-align: right;
+    }
+form div{
+    height: 100px;
+    width: 300px;
+    
+    }
+
+h1{
+    font-size: 60px;
+    text-decoration:none;
+    }
+.formbox{
+	width: 310px;
+	height: auto;
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: auto;
+	padding: 0;
+	border: 0;
+}
+
+span.one{
+	float: left;
+	margin-top: 58px;
+}
+
+.two{
+	margin-top: 53px;
+	float: right;
+}
+
+
+
+aside{
+
+}
+
+*/
+
+a{ 
+	text-decoration:none;
+    color: inherit;
+}
+
+nav ul li{
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 2.5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+footer{
+    margin-top: 0;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background-color: red;
+}
