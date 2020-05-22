@@ -7,6 +7,9 @@
 ?>
 
 <!DOCTYPE html>
+<!--
+	https://php.eduardokraus.com/upload-de-imagens-com-php
+-->
 <html>
     <head>
         <meta charset="UTF-8">
